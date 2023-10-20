@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { redirect } from 'react-router-dom'
+import CommentCreate from './CommentCreate'
 
 export default function PostList() {
   const [posts, setPosts] = useState({})
@@ -8,13 +8,12 @@ export default function PostList() {
   async function getPosts() {
     const res = await axios.get('http://localhost:4000/posts')
     setPosts(res.data)
-    setPosts(res.data)
   }
-
+  
   useEffect(() => {
     getPosts()
   }, [])
-
+  
   const renderedPosts = Object.values(posts).map(post => {
     return (
       <div key={post.id}
@@ -22,8 +21,9 @@ export default function PostList() {
         style={{ width: '30%', marginBottom: '20px' }}
       >
         <div className='card-body'>
-          {post.title}
+          <h3>{post.title}</h3>
         </div>
+        <CommentCreate postId={post.id}/>
       </div>
     )
   })
