@@ -14,21 +14,20 @@ export default function CommentCreate({ postId }) {
     setContent("")
   }
 
-
-
   return (
-        <div>
-            <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <label htmlFor=""
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                >
-                  New Comment</label>
-              </div>
-              <button className="btn btn-primary"></button>
-            </form>
+    <div>
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label htmlFor="">New Comment</label>
+          <input
+            className="form-control my-4"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></input>
         </div>
-    )
+        <button className="btn btn-primary">SUBMIT</button>
+      </form>
+    </div>
+  )
 
 }
